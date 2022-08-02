@@ -4,7 +4,8 @@
   "description": "Bathroom finder Application.",
   "main": "app.js",
   "scripts": {
-    "start": "npm server.js",
+    "start-client": "cd client && react-scripts start",
+    "start": "(cd client && npm run build) && (cd ../ && node server.js)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/felipemfm/cc27-greenfield#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "path": "^0.12.7"
   }
 }
