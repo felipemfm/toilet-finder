@@ -1,0 +1,23 @@
+{
+  "name": "cc27-greenfield",
+  "version": "1.0.0",
+  "description": "Bathroom finder Application.",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipemfm/cc27-greenfield.git"
+  },
+  "author": "Felipe Machado, Joe Sacco, Marie Matsumoto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipemfm/cc27-greenfield/issues"
+  },
+  "homepage": "https://github.com/felipemfm/cc27-greenfield#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
