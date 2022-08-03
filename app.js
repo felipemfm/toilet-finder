@@ -5,9 +5,9 @@ const app = express();
 app.use(express.json());
 
 // add middlewares
-app.use(express.static(path.join(__dirname, './client/build')));
+app.use(express.static(path.join(__dirname, './client/build'))); // create path to URL
 
-app.get('/test', (req, res) => {
+app.get('/test', (req, res) => {  // test to see if it's working
   res.status(200).json({ status: 'success', message: 'From express' });
 });
 
