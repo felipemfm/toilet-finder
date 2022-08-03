@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';  // below is a standard template for react
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
