@@ -1,0 +1,24 @@
+/* all */
+header {
+  background: #a9a9a9;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+}
+
+/* tablet, sp */
+@media screen and (max-width: 767px) {
+  header {
+    padding: 20px;
+  }
+}
+
+/* pc */
+@media screen and (min-width: 768px) {
+  header {
+    padding: 20px 40px;
+  }
+}

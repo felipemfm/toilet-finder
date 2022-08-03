@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './styles/reset.css';
 import './styles/base.css';
+import Header from './components/layout/Header';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <div>
         <h1>Felipe! Joe! Marie! Project</h1>
         {message ? message : ''}
