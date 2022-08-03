@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start-client": "cd client && react-scripts start",
+    "migrate-latest": "npx knex migrate:latest --knexfile db/knexfile.js",
     "build": "cd client && npm run build",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/felipemfm/cc27-greenfield#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "path": "^0.12.7"
+    "knex": "^2.2.0",
+    "path": "^0.12.7",
+    "pg": "^8.7.3"
   }
 }
