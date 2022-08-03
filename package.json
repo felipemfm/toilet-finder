@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start-client": "cd client && react-scripts start",
-    "migrate-latest": "npx knex migrate:latest --knexfile db/knexfile.js",
-    "build": "cd client && npm run build",
     "start": "node server.js",
+    "build": "cd client && npm run build",
+    "prod": "npm run build && npm start",
+    "migrate-latest": "npx knex migrate:latest --knexfile db/knexfile.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
