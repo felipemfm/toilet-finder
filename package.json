@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start-client": "cd client && react-scripts start",
-    "start": "(cd client && npm run build) && (cd ../ && node server.js)",
+    "build": "cd client && npm run build",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
