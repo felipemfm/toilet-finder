@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <h1>Felipe! Joe! Marie!</h1>
+      <h1>Felipe! Joe! Marie! Project</h1>
       {message ? message : ''}
     </div>
   );
