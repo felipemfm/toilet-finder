@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './styles/reset.css';
 import './styles/base.css';
 import Header from './components/layout/Header';
+import MapArea from './components/layout/MapArea';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <Header />
+      <MapArea />
       <div>
         <h1>Felipe! Joe! Marie! Project</h1>
         {message ? message : ''}
