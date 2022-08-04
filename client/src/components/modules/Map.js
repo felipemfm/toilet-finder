@@ -10,23 +10,22 @@ export default function Map() {
   };
 
   const defaultCenter = {
-    // lat: 35.6581391, lng: 139.7277848
-    lat: 41.3851, lng: 2.1734
+    lat: 35.6581391, lng: 139.7277848
   };
 
   const locations = [
     {
-        name: "Location 1",
+        name: "Public Toilet",
         location: {
-            lat: 41.3954,
-            lng: 2.162
+            lat: 35.665897800000000,
+            lng: 139.740290600000000
         },
     },
     {
-        name: "Location 2",
+        name: "Ebisu Park Toilet",
         location: {
-            lat: 41.3917,
-            lng: 2.1649
+            lat: 35.647003300000000,
+            lng: 139.707138900000000
         },
     },
   ];
