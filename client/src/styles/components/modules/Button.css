@@ -1,0 +1,31 @@
+/* all */
+.go_button {
+  display: block;
+  color: #fff;
+  background: #ffa500;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.go_button:hover {
+  opacity: 0.7;
+}
+
+/* tablet, sp */
+@media screen and (max-width: 767px) {
+  .go_button {
+    margin: 30px auto;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+/* pc */
+@media screen and (min-width: 768px) {
+  .go_button {
+    margin: 40px auto;
+    padding: 20px;
+    font-size: 20px;
+  }
+}
