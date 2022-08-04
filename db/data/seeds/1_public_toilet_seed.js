@@ -3,8 +3,6 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('locations').truncate()
   await knex('locations').insert([
     {name: 'Public Toilet', type: 'publicToilet', lat: 35.6658978, lng: 139.7402906},
     {name: 'Ebisu Park Toilet', type: 'publicToilet', lat: 35.6470033, lng: 139.7071389},
