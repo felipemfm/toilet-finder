@@ -7,11 +7,12 @@ app.use(express.json());
 // add middlewares
 app.use(express.static(path.join(__dirname, './client/build'))); // create path to URL
 
-app.get('/test', (req, res) => {  // test to see if it's working
+app.get('/test', (req, res) => {
+  // test to see if it's working
   res.status(200).json({ status: 'success', message: 'From express' });
 });
 
-app.use((req, res, next) => {
+app.use('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, './client/build', 'index.html'));
 });
 
