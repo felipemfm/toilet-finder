@@ -1,0 +1,18 @@
+/* all */
+
+/* tablet, sp */
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 150px;
+    height: 30px;
+  }
+
+  .logo img {
+    width: 100%;
+  }
+}
+
+/* pc */
+@media screen and (min-width: 768px) {
+
+}

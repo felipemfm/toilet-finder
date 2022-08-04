@@ -1,0 +1,14 @@
+/* all */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* tablet, sp */
+@media screen and (max-width: 767px) {
+
+}
+
+/* pc */
+@media screen and (min-width: 768px) {
+
+}
