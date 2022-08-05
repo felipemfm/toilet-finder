@@ -5,6 +5,7 @@ import './styles/base.css';
 import Header from './components/layout/Header';
 import TopArea  from './components/layout/TopArea';
 import MapArea from './components/layout/MapArea';
+import DetailArea from './components/layout/DetailArea';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -22,8 +23,9 @@ function App() {
   return (
     <>
       <Header />
-      <TopArea />
+      {/* <TopArea /> */}
       {/* <MapArea /> */}
+      <DetailArea />
       <div>
         {message ? message : ''}
       </div>

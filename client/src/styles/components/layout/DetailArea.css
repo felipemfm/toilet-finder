@@ -1,0 +1,28 @@
+/* all */
+.detail_title {
+  text-align: center;
+}
+
+/* tablet, sp */
+@media screen and (max-width: 767px) {
+  .detail_area {
+    margin: 30px 0;
+  }
+
+  .detail_title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/* pc */
+@media screen and (min-width: 768px) {
+  .detail_area {
+    margin: 40px 0;
+  }
+
+  .detail_title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}

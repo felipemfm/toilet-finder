@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from '../modules/Button';
 import '../../styles/components/layout/TopArea.css';
 
