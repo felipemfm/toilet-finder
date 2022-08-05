@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
-export default function Map() {
-  const GOOGLE_API_KEY='AIzaSyDeHvAZDDxYcApYzAZh6ge13VYXPQbBawE';
+export default function Map(props) {
+  const GOOGLE_API_KEY='AIzaSyB1IuqtNckU_jJcai7fN1lyNj4ua88vs8g';
+  const [bathroom, setBathroom] = useState('');
+  const getStatus = props.getStatus;
+
+  useEffect(() => {
+    const getBathroom = async () => {
+      await axios.get(getStatus).then((res) => {
+        setBathroom(res.data);
+      });
+    };
+    getBathroom();
+  }, []);
 
   const mapStyles = {
     height: "100%",
@@ -13,22 +25,6 @@ export default function Map() {
     lat: 35.6581391, lng: 139.7277848
   };
 
-  const locations = [
-    {
-        name: "Public Toilet",
-        location: {
-            lat: 35.665897800000000,
-            lng: 139.740290600000000
-        },
-    },
-    {
-        name: "Ebisu Park Toilet",
-        location: {
-            lat: 35.647003300000000,
-            lng: 139.707138900000000
-        },
-    },
-  ];
 
   return (
     <LoadScript
@@ -39,9 +35,9 @@ export default function Map() {
           center={defaultCenter}
       >
         {
-          locations.map(item => {
+          bathroom && bathroom.map(item => {
               return (
-                  <MarkerF key={item.name} position={item.location} />
+                  <MarkerF key={item.name} position={{lat: Number(item.lat), lng: Number(item.lng)}} />
               )
           })
         }

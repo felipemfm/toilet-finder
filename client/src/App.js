@@ -26,7 +26,7 @@ function App() {
     <>
       <Header />
       <TopArea userLocation={userLocation} setUserLocation={setUserLocation} mode={mode} setMode={setMode}/> 
-      {/* <MapArea /> */}
+      {/* <MapArea mode={mode} /> */}
       {/* <DetailArea /> */}
       <div>
         {message ? message : ''}
