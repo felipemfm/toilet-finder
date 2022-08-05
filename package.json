@@ -9,8 +9,8 @@
   "scripts": {
     "start-client": "cd client && react-scripts start",
     "build-client": "cd client && react-scripts build",
-    "start": "node server.js",
-    "prod": "npm run build-client && npm start",
+    "start": "nodemon server.js",
+    "prod": "npm run build-client && node server.js",
     "migrate-latest": "npx knex migrate:latest --knexfile db/knexfile.js",
     "seed-data": "npx knex seed:run --knexfile db/knexfile.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -34,6 +34,7 @@
     "express": "^4.18.1",
     "haversine-distance": "^1.2.1",
     "knex": "^2.2.0",
+    "nodemon": "^2.0.19",
     "path": "^0.12.7",
     "pg": "^8.7.3",
     "react": "^18.2.0",
