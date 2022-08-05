@@ -9,6 +9,8 @@ import DetailArea from './components/layout/DetailArea';
 
 function App() {
   const [message, setMessage] = useState('');
+  const [userLocation, setUserLocation] = useState({});
+  const [mode, setMode] = useState('');
 
   useEffect(() => {
     const getTest = async () => {
@@ -23,9 +25,9 @@ function App() {
   return (
     <>
       <Header />
-      {/* <TopArea /> */}
+      <TopArea userLocation={userLocation} setUserLocation={setUserLocation} mode={mode} setMode={setMode}/> 
       {/* <MapArea /> */}
-      <DetailArea />
+      {/* <DetailArea /> */}
       <div>
         {message ? message : ''}
       </div>
