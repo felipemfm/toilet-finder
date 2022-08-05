@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/components/layout/TopArea.css';
 import DropMenu from '../modules/DropMenu';
+import Button from '../modules/Button';
 
 export default function TopArea(props) {
   const watchUserLocation = () => {
@@ -20,7 +21,7 @@ export default function TopArea(props) {
     <div className='top_area'>
       <h2 className='top_title'>Find a Bathroom!</h2>
       <DropMenu setMode={props.setMode}/>
-      <button className='go_button' onClick={watchUserLocation}>Go!</button>
+      <Button title={"Go!"} onClick={watchUserLocation}/>
     </div>
   )
 }
