@@ -23,11 +23,6 @@ const closestNLocations = (data, userLocation, n) => {
   return data.slice(0, n);
 };
 
-app.get('/test', (req, res) => {
-  // test to see if it's working
-  res.status(200).json({ status: 'success', message: 'From express' });
-});
-
 // return top ten closest locations from db
 app.get('/getToilet', async (req, res) => {
   // const userLat = req.query.lat;
