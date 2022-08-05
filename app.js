@@ -26,12 +26,23 @@ const closestNLocations = (data, userLocation, n) => {
 };
 
 app.get('/api/v1/closest', async (req, res) => {
-  const userLocation = req.query.userLocation;
+  const userLocation = JSON.parse(req.query.userLocation);
   const limit = req.query.limit || 10;
-  const mode = req.query.mode || "";
+  const mode = req.query.mode || '';
 
   try {
-    const data = await db('locations').select('*');
+    let data = [];
+    if (mode === 'public_bathroom') {
+      data = await db('locations')
+        .select('*')
+        .whereIn('type', ['publicToilet']);
+    } else if (mode === 'non_public_bathroom') {
+      data = await db('locations')
+        .select('*')
+        .whereNotIn('type', ['publicToilet']);
+    } else {
+      data = await db('locations').select('*');
+    }
     res.status(200).send(closestNLocations(data, userLocation, limit));
   } catch (err) {
     console.log(err);
