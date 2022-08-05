@@ -1,14 +1,14 @@
 const express = require('express');
 const path = require('path');
 const db = require('./db'); // program will auto-look for index.js file inside db
+//required for local development with express and React server running at the same time
+let cors = require('cors');
 
 // calculate distance between two coordinates
 const haversineDistance = require('haversine-distance');
 
 const app = express();
 app.use(express.json());
-
-let cors = require('cors');
 app.use(cors());
 
 // add middleware

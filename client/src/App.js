@@ -18,14 +18,14 @@ function App() {
 
   const getData = async function (limit, mode) {
     await axios
-      .get('http://localhost:8000/api/v1/closest', {
+      .get('/api/v1/closest', {
         params: { userLocation, limit, mode },
       })
       .then((res) => setLocations(res.data))
       .catch((err) => console.log(err));
   };
-
   useEffect(() => {
+    setLocations([]);
     if (userLocation['lat']) {
       switch (mode) {
         case 'closest_bathroom':
