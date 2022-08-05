@@ -13,14 +13,14 @@ const userLocation = { lat: 35.6581391, lng: 139.7277848 };
 app.use(express.static(path.join(__dirname, './client/build'))); // create path to URL
 
 // Return n closest locations
-const closestNLocations = (data, b) => {
+const closestNLocations = (data, userLocation, n) => {
   data.map((el) => {
     el.distance = haversineDistance(userLocation, { lat: el.lat, lng: el.lng });
   });
   data.sort(function (a, b) {
     return a.distance - b.distance;
   });
-  return data.slice(0, 10);
+  return data.slice(0, n);
 };
 
 app.get('/test', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/getToilet', async (req, res) => {
   // const userLng = req.query.lng;
   const data = await db('locations').select('*');
 
-  res.status(200).send(closestNLocations(data, 10));
+  res.status(200).send(closestNLocations(data, userLocation, 10));
 });
 
 app.get('/getPrivate', async (req, res) => {
@@ -44,7 +44,7 @@ app.get('/getPrivate', async (req, res) => {
     .select('*')
     .whereNotIn('type', ['publicToilet']);
 
-  res.status(200).send(closestNLocations(data, 10));
+  res.status(200).send(closestNLocations(data, userLocation, 10));
 });
 
 app.get('/getPublic', async (req, res) => {
@@ -54,7 +54,7 @@ app.get('/getPublic', async (req, res) => {
     .select('*')
     .whereIn('type', ['publicToilet']);
 
-  res.status(200).send(closestNLocations(data, 10));
+  res.status(200).send(closestNLocations(data, userLocation, 10));
 });
 
 app.use('/', (req, res, next) => {
