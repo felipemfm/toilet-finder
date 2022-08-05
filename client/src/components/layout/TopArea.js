@@ -19,6 +19,7 @@ export default function TopArea(props) {
   return (
     <div className='top_area'>
       <h2 className='top_title'>Find a Bathroom!</h2>
+      <DropMenu setMode={props.setMode}/>
       <button className='go_button' onClick={watchUserLocation}>Go!</button>
     </div>
   )
