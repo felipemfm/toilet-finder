@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import './styles/reset.css';
 import './styles/base.css';
 import Header from './components/layout/Header';
+import TopArea  from './components/layout/TopArea';
 import MapArea from './components/layout/MapArea';
+import DetailArea from './components/layout/DetailArea';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -21,9 +23,10 @@ function App() {
   return (
     <>
       <Header />
-      <MapArea />
+      {/* <TopArea /> */}
+      {/* <MapArea /> */}
+      <DetailArea />
       <div>
-        <h1>Felipe! Joe! Marie! Project</h1>
         {message ? message : ''}
       </div>
     </>

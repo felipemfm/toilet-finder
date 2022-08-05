@@ -1,6 +1,8 @@
 import React from 'react';
 import Map from '../modules/Map';
 import '../../styles/components/layout/MapArea.css';
+import Button from '../modules/Button';
+
 
 export default function MapArea() {
   return (
@@ -9,6 +11,7 @@ export default function MapArea() {
       <div className='map'>
         <Map />
       </div>
+      <Button title="Go to the closest bathroom"/>
     </div>
   )
 }
