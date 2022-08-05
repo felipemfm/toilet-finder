@@ -1,34 +1,27 @@
-import React, { useState, useEffect } from 'react';
 import Map from '../modules/Map';
 import '../../styles/components/layout/MapArea.css';
 import Button from '../modules/Button';
 
-
 export default function MapArea(props) {
-  let getStatus;
-  
-  switch (props.mode) {
-    case 'closest_bathroom':
-      getStatus = '/getToilet';
-      break;
-    case 'public_bathroom':
-      getStatus = '/getPublic';
-      break;
-    case 'non_public_bathroom':
-      getStatus = '/getPrivate';
-      break;
-    case 'all_bathrooms':
-      getStatus = '/getToilet';
-      break;
-  }
+  const clearState = function () {
+    props.setLocations([]);
+    props.setUserLocation({});
+  };
 
   return (
     <div className='map_area'>
       <h2 className='map_title'>Select a bathroom!</h2>
       <div className='map'>
-        <Map getStatus={getStatus}/>
+        {props.locations.length > 0 && (
+          <Map
+            userLocation={props.userLocation}
+            locations={props.locations}
+            setLocations={props.setLocations}
+            setDestination={props.setDestination}
+          />
+        )}
       </div>
-      <Button title="Go to the closest bathroom"/>
+      <Button title='Clear' onClick={clearState} />
     </div>
-  )
+  );
 }

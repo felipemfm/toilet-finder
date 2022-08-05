@@ -1,47 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
+import Button from './Button';
 
 export default function Map(props) {
-  const GOOGLE_API_KEY='AIzaSyB1IuqtNckU_jJcai7fN1lyNj4ua88vs8g';
-  const [bathroom, setBathroom] = useState('');
-  const getStatus = props.getStatus;
-
-  useEffect(() => {
-    const getBathroom = async () => {
-      await axios.get(getStatus).then((res) => {
-        setBathroom(res.data);
-      });
-    };
-    getBathroom();
-  }, []);
+  const [markerInfo, setMarkInfo] = useState(null);
 
   const mapStyles = {
-    height: "100%",
-    width: "100%"
+    height: '100%',
+    width: '100%',
   };
-
   const defaultCenter = {
-    lat: 35.6581391, lng: 139.7277848
+    lat: props.userLocation.lat,
+    lng: props.userLocation.lng,
   };
-
-
   return (
-    <LoadScript
-      googleMapsApiKey={GOOGLE_API_KEY}>
+    <>
       <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={defaultCenter}
+        mapContainerStyle={mapStyles}
+        zoom={13}
+        center={defaultCenter}
+        onClick={() => setMarkInfo(null)}
       >
-        {
-          bathroom && bathroom.map(item => {
-              return (
-                  <MarkerF key={item.name} position={{lat: Number(item.lat), lng: Number(item.lng)}} />
-              )
-          })
-        }
+        <MarkerF label={'👤'} key={0} position={defaultCenter}></MarkerF>
+        {props.locations.length > 0 &&
+          props.locations.map((item) => {
+            return (
+              <MarkerF
+                key={item.id}
+                label={'🚻'}
+                position={{ lat: Number(item.lat), lng: Number(item.lng) }}
+                onClick={() => setMarkInfo(item)}
+              />
+            );
+          })}
       </GoogleMap>
-    </LoadScript>
-  )
+      {markerInfo ? (
+        <div>
+          <h3>Establishment: {markerInfo.name}</h3>
+          {markerInfo.type !== 'publicToilet' ? (
+            <h3>Type: {markerInfo.type}</h3>
+          ) : null}
+          <h3>Distance: {Math.floor(markerInfo.distance)}m</h3>
+          <Button
+            title={'Go!'}
+            onClick={() => {
+              props.setLocations([markerInfo]);
+              props.setDestination(markerInfo);
+            }}
+          />
+        </div>
+      ) : null}
+    </>
+  );
 }

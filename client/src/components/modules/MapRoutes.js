@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {  
-  DirectionsService,
-  DirectionsRenderer,
-} from '@react-google-maps/api';
+import { DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 export default function MapRoutes(props) {
   const [routes, setRoutes] = useState();
@@ -12,8 +9,11 @@ export default function MapRoutes(props) {
       {!routes && (
         <DirectionsService
           options={{
-            destination: props.destination.location,
-            origin: props.user.location,
+            destination: {
+              lat: Number(props.destination.lat),
+              lng: Number(props.destination.lng),
+            },
+            origin: props.user,
             travelMode: 'WALKING',
           }}
           callback={(res) => {
@@ -22,7 +22,6 @@ export default function MapRoutes(props) {
                 setRoutes(res);
               }
             } else {
-              console.log('response: ', res);
             }
           }}
         />
