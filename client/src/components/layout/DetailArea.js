@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleMap } from '@react-google-maps/api';
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
 
 import Button from '../modules/Button';
 import MapRoutes from '../modules/MapRoutes';
@@ -15,21 +15,35 @@ export default function Map(props) {
   };
 
   // clear button resets everything
-  const clearState = function () { 
+  const clearState = function () {
     props.setLocations([]);
     props.setDestination({});
     props.setUserLocation({});
   };
 
   const typeNormalize = (type) => {
-    if (type === 'publicToilet') {return 'Public Toilet'};
-    if (type === 'convenienceStore') {return 'Convenience Store Toilet'};
-    if (type === 'fastFood') {return 'Fast Food Toilet'};
-    if (type === 'familyRestaurant') {return 'Family Restaurant Toilet'};
-    if (type === 'departmentStore') {return 'Deparment Store Toilet'};
-    if (type === 'lodging') {return 'Hotel Toilet'};
-    if (type === 'library') {return 'Library Toilet'};
-  }
+    if (type === 'publicToilet') {
+      return 'Public Toilet';
+    }
+    if (type === 'convenienceStore') {
+      return 'Convenience Store Toilet';
+    }
+    if (type === 'fastFood') {
+      return 'Fast Food Toilet';
+    }
+    if (type === 'familyRestaurant') {
+      return 'Family Restaurant Toilet';
+    }
+    if (type === 'departmentStore') {
+      return 'Deparment Store Toilet';
+    }
+    if (type === 'lodging') {
+      return 'Hotel Toilet';
+    }
+    if (type === 'library') {
+      return 'Library Toilet';
+    }
+  };
 
   return (
     <div>
@@ -39,19 +53,33 @@ export default function Map(props) {
           zoom={13}
           center={defaultCenter}
         >
+          <MarkerF position={defaultCenter}></MarkerF>
+          <MarkerF
+              icon={{
+                url: 'https://i.ibb.co/r3cPX7w/logo-marker-sm.png',
+                scaledSize: {height: 25, width: 25}
+              }}
+            position={{
+              lat: Number(props.destination.lat),
+              lng: Number(props.destination.lng),
+            }}
+          ></MarkerF>
+
           <MapRoutes
             user={props.userLocation}
             destination={props.destination}
           />
         </GoogleMap>
-      
-      <div className='location_info'>
-        <h3>Destination: {props.destination.name}</h3>
-        {props.destination.type !== 'publicToilet' ?  <h3>Type: {typeNormalize(props.destination.type)}</h3> : null}
-        <h3>Distance: {Math.floor(props.destination.distance)} m</h3>
+
+        <div className='location_info'>
+          <h3>Destination: {props.destination.name}</h3>
+          {props.destination.type !== 'publicToilet' ? (
+            <h3>Type: {typeNormalize(props.destination.type)}</h3>
+          ) : null}
+          <h3>Distance: {Math.floor(props.destination.distance)} m</h3>
+        </div>
+        <Button title={'Clear'} onClick={clearState} />
       </div>
-      <Button title={'Clear'} onClick={clearState} />
-    </div>
     </div>
   );
 }

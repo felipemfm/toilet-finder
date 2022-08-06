@@ -6,7 +6,7 @@ export default function MapRoutes(props) {
 
   return (
     <>
-    {/*Google Map React API - set route to walking*/}
+      {/*Google Map React API - set route to walking*/}
       {!routes && (
         <DirectionsService
           options={{
@@ -28,7 +28,19 @@ export default function MapRoutes(props) {
           }}
         />
       )}
-      {routes && <DirectionsRenderer directions={routes} />}
+      {routes && (
+        <DirectionsRenderer
+          directions={routes}
+          options={{
+            suppressMarkers: true,
+            polylineOptions: {
+              strokeColor: '#160873',
+              strokeOpacity: 1.0,
+              strokeWeight: 4,
+            },
+          }}
+        />
+      )}
     </>
   );
 }

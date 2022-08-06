@@ -47,14 +47,16 @@ export default function Map(props) {
         center={markerInfo ? null : defaultCenter}
         onClick={() => setMarkerInfo(null)}
       >
-        <MarkerF label={'👤'} key={0} position={defaultCenter}></MarkerF>
+        <MarkerF  key={0} position={defaultCenter} />
         {props.locations.length > 0 &&
           props.locations.map((item) => {
             return (
               <MarkerF
                 key={item.id}
-                // label={'🚻'}
-                icon={'https://i.ibb.co/r3cPX7w/logo-marker-sm.png'}
+                icon={{
+                  url: 'https://i.ibb.co/r3cPX7w/logo-marker-sm.png',
+                  scaledSize: {height: 25, width: 25}
+                }}
                 position={{ lat: Number(item.lat), lng: Number(item.lng) }}
                 onClick={() => setMarkerInfo(item)}
               />
