@@ -30,12 +30,12 @@ export default function MapArea(props) {
       <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
         {props.locations.length > 0 && (
           <>
-            <GoogleMap
-              mapContainerStyle={mapStyles}
-              zoom={13}
-              center={activeMarker ? null : defaultCenter}
-            >
-              <div className='map'>
+            <div className='map'>
+              <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={13}
+                center={activeMarker ? null : defaultCenter}
+              >
                 <h2 className='map_title'>Select a bathroom!</h2>
                 {props.userLocation['lat'] && (
                   <MapMarkers
@@ -54,8 +54,8 @@ export default function MapArea(props) {
                     destination={props.destination}
                   />
                 )}
-              </div>
-            </GoogleMap>
+              </GoogleMap>
+            </div>
             <Button title='Clear' onClick={clearState} />
           </>
         )}
