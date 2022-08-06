@@ -14,7 +14,8 @@ export default function Map(props) {
     lng: props.userLocation.lng,
   };
 
-  const clearState = function () {
+  // clear button resets everything
+  const clearState = function () { 
     props.setLocations([]);
     props.setDestination({});
     props.setUserLocation({});

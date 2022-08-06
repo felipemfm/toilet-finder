@@ -2,14 +2,14 @@ const express = require('express');
 const path = require('path');
 const db = require('./db'); // program will auto-look for index.js file inside db
 //required for local development with express and React server running at the same time
-let cors = require('cors');
+const cors = require('cors'); // cross origin resource sharing - helps front and back become friends :)
 
 // calculate distance between two coordinates
 const haversineDistance = require('haversine-distance');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors()); 
 
 // add middleware
 app.use(express.static(path.join(__dirname, './client/build'))); // create path to URL
@@ -25,14 +25,16 @@ const closestNLocations = (data, userLocation, n) => {
   return data.slice(0, n);
 };
 
-app.get('/api/v1/closest', async (req, res) => {
+// returns closest locations
+app.get('/api/v1/closest', async (req, res) => { 
   const userLocation = JSON.parse(req.query.userLocation);
   const limit = req.query.limit || 10;
   const mode = req.query.mode || '';
 
   try {
+    // get info based on mode selection
     let data = [];
-    if (mode === 'public_bathroom') {
+    if (mode === 'public_bathroom') {  
       data = await db('locations')
         .select('*')
         .whereIn('type', ['publicToilet']);

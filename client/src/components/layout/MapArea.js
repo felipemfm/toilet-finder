@@ -13,12 +13,12 @@ export default function MapArea(props) {
       <h2 className='map_title'>Select a bathroom!</h2>
       <div className='map'>
         {props.locations.length > 0 && (
-          <Map
+          <Map 
             userLocation={props.userLocation}
             locations={props.locations}
             setLocations={props.setLocations}
             setDestination={props.setDestination}
-          />
+          /> 
         )}
       </div>
       <Button title='Clear' onClick={clearState} />

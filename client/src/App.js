@@ -16,17 +16,18 @@ function App() {
 
   const GOOGLE_API_KEY = 'AIzaSyB1IuqtNckU_jJcai7fN1lyNj4ua88vs8g';
 
-  const getData = async function (limit, mode) {
+  const getData = async function (limit, mode) { 
     await axios
-      .get('/api/v1/closest', {
+      .get('http://localhost:8000/api/v1/closest', { // server runs on 8000 (react on 3000)
         params: { userLocation, limit, mode },
       })
       .then((res) => setLocations(res.data))
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
+  // get locations based on menu mode selection
+  useEffect(() => { 
     setLocations([]);
-    if (userLocation['lat']) {
+    if (userLocation['lat']) { // if user location exists
       switch (mode) {
         case 'closest_bathroom':
           userLocation && getData(1, 'closest_bathroom');
@@ -56,7 +57,7 @@ function App() {
   return (
     <>
       <Header />
-      {locations.length === 0 && (
+      {locations.length === 0 && ( // if locations empty go to Top Area
         <TopArea
           userLocation={userLocation}
           setUserLocation={setUserLocation}
@@ -64,8 +65,8 @@ function App() {
           setMode={setMode}
         />
       )}
-      <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
-        {locations.length > 1 && userLocation['lat'] && (
+      <LoadScript googleMapsApiKey={GOOGLE_API_KEY}> {/* loads API key */}
+        {locations.length > 1 && userLocation['lat'] && ( // if location options are greater than one switch to MapArea
           <MapArea
             userLocation={userLocation}
             locations={locations}
@@ -74,7 +75,7 @@ function App() {
             setDestination={setDestination}
           />
         )}
-        {locations.length === 1 && userLocation['lat'] && (
+        {locations.length === 1 && userLocation['lat'] && ( // if destination set, location set to one and switches to DetailArea
           <DetailArea
             userLocation={userLocation}
             destination={destination}
@@ -83,7 +84,7 @@ function App() {
             setDestination={setDestination}
           />
         )}
-      </LoadScript>
+      </LoadScript> 
     </>
   );
 }

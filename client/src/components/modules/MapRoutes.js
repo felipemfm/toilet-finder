@@ -6,6 +6,7 @@ export default function MapRoutes(props) {
 
   return (
     <>
+    {/*Google Map React API - set route to walking*/}
       {!routes && (
         <DirectionsService
           options={{
@@ -22,6 +23,7 @@ export default function MapRoutes(props) {
                 setRoutes(res);
               }
             } else {
+              console.error(res);
             }
           }}
         />

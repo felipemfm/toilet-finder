@@ -3,7 +3,7 @@ import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import Button from './Button';
 
 export default function Map(props) {
-  const [markerInfo, setMarkInfo] = useState(null);
+  const [markerInfo, setMarkerInfo] = useState(null);
 
   const mapStyles = {
     height: '100%',
@@ -15,11 +15,12 @@ export default function Map(props) {
   };
   return (
     <>
-      <GoogleMap
+    {/*makes map appear*/}
+      <GoogleMap 
         mapContainerStyle={mapStyles}
         zoom={13}
         center={defaultCenter}
-        onClick={() => setMarkInfo(null)}
+        onClick={() => setMarkerInfo(null)}
       >
         <MarkerF label={'👤'} key={0} position={defaultCenter}></MarkerF>
         {props.locations.length > 0 &&
@@ -29,7 +30,7 @@ export default function Map(props) {
                 key={item.id}
                 label={'🚻'}
                 position={{ lat: Number(item.lat), lng: Number(item.lng) }}
-                onClick={() => setMarkInfo(item)}
+                onClick={() => setMarkerInfo(item)}
               />
             );
           })}
@@ -43,6 +44,7 @@ export default function Map(props) {
           <h3>Distance: {Math.floor(markerInfo.distance)}m</h3>
           <Button
             title={'Go!'}
+            // this click will make MapArea change to DetailArea component
             onClick={() => {
               props.setLocations([markerInfo]);
               props.setDestination(markerInfo);
