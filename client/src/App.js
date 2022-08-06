@@ -18,7 +18,7 @@ function App() {
 
   const getData = async function (limit, mode) {
     await axios
-      .get('http://localhost:8000/api/v1/closest', {
+      .get('/api/v1/closest', {
         // server runs on 8000 (react on 3000)
         params: { userLocation, limit, mode },
       })
