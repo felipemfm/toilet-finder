@@ -50,7 +50,7 @@ export default function Map(props) {
         {props.destination.type !== 'publicToilet' ?  <h3>Type: {typeNormalize(props.destination.type)}</h3> : null}
         <h3>Distance: {Math.floor(props.destination.distance)} m</h3>
       </div>
-      <Button title={'cancel'} onClick={clearState} />
+      <Button title={'Clear'} onClick={clearState} />
     </div>
     </div>
   );
