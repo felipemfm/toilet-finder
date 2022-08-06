@@ -21,6 +21,16 @@ export default function Map(props) {
     props.setUserLocation({});
   };
 
+  const typeNormalize = (type) => {
+    if (type === 'publicToilet') {return 'Public Toilet'};
+    if (type === 'convenienceStore') {return 'Convenience Store Toilet'};
+    if (type === 'fastFood') {return 'Fast Food Toilet'};
+    if (type === 'familyRestaurant') {return 'Family Restaurant Toilet'};
+    if (type === 'departmentStore') {return 'Deparment Store Toilet'};
+    if (type === 'lodging') {return 'Hotel Toilet'};
+    if (type === 'library') {return 'Library Toilet'};
+  }
+
   return (
     <div>
       <div className='map'>
@@ -34,13 +44,14 @@ export default function Map(props) {
             destination={props.destination}
           />
         </GoogleMap>
-      </div>
-      <div>
-        <p>Destination: {props.destination.name}</p>
-        {props.destination.type !== 'publicToilet' ?  <p>Type: {props.destination.type}</p> : null}
-        <p>Distance: {Math.floor(props.destination.distance)} m</p>
+      
+      <div className='location_info'>
+        <h3>Destination: {props.destination.name}</h3>
+        {props.destination.type !== 'publicToilet' ?  <h3>Type: {typeNormalize(props.destination.type)}</h3> : null}
+        <h3>Distance: {Math.floor(props.destination.distance)} m</h3>
       </div>
       <Button title={'cancel'} onClick={clearState} />
+    </div>
     </div>
   );
 }

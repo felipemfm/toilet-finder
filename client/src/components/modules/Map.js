@@ -13,6 +13,17 @@ export default function Map(props) {
     lat: props.userLocation.lat,
     lng: props.userLocation.lng,
   };
+
+  const typeNormalize = (type) => {
+    if (type === 'publicToilet') {return 'Public Toilet'};
+    if (type === 'convenienceStore') {return 'Convenience Store Toilet'};
+    if (type === 'fastFood') {return 'Fast Food Toilet'};
+    if (type === 'familyRestaurant') {return 'Family Restaurant Toilet'};
+    if (type === 'departmentStore') {return 'Deparment Store Toilet'};
+    if (type === 'lodging') {return 'Hotel Toilet'};
+    if (type === 'library') {return 'Library Toilet'};
+  }
+
   return (
     <>
     {/*makes map appear*/}
@@ -28,7 +39,8 @@ export default function Map(props) {
             return (
               <MarkerF
                 key={item.id}
-                label={'🚻'}
+                // label={'🚻'}
+                icon={'https://i.ibb.co/r3cPX7w/logo-marker-sm.png'}
                 position={{ lat: Number(item.lat), lng: Number(item.lng) }}
                 onClick={() => setMarkerInfo(item)}
               />
@@ -36,12 +48,14 @@ export default function Map(props) {
           })}
       </GoogleMap>
       {markerInfo ? (
-        <div>
-          <h3>Establishment: {markerInfo.name}</h3>
+        <div className='location_info'>
+          <h3>Destination: {markerInfo.name}</h3>
           {markerInfo.type !== 'publicToilet' ? (
-            <h3>Type: {markerInfo.type}</h3>
+            <h3>Type: {typeNormalize(markerInfo.type)}</h3>
           ) : null}
           <h3>Distance: {Math.floor(markerInfo.distance)}m</h3>
+          <br></br>
+          <br></br>
           <Button
             title={'Go!'}
             // this click will make MapArea change to DetailArea component

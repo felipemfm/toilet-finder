@@ -1,4 +1,9 @@
 /* all */
+
+.map {
+  margin: 0 auto;
+}
+
 .detail_title {
   text-align: center;
 }
@@ -25,4 +30,7 @@
     font-size: 32px;
     margin-bottom: 40px;
   }
+}
+
+.location_info {
 }

@@ -15,9 +15,8 @@ ToiletFinder.com is a super convenient search tool powered by Google Maps for fi
 We wanted a tool that allows us to:
 
 Hit the go button to find the closest bathroom as soon as possible.
-For people with more time, sort bathroom options based on public/private options.
-Sort based on other considerations (kid friendly, special needs, etc. -- future feature)
-Provide open/closed info and probability that bathroom is available for public use (--future feature)
+For people with more time, allow them to sort bathroom options based on a variety of use cases, such as public, private, kid friendly and accessibility.
+Provide open/closed info for each location and probability that a bathroom is available for public use.
 
 ToiletFinder.com is the only app that provides fast relief!
 
@@ -93,5 +92,10 @@ Heroku will use this script on deployment.
 
 ## **Future Features**
 
-1. Add here
-2. Add here
+1. Enable live location update as user walks toward location (paid)
+2. Expand database to cover all of Tokyo
+3. Work on CSS for map and text consistency throughout each stage of the app
+4. Enable greater location filtering (kid friendly, accessability, open hours)
+5. Add probability that a bathroom is actually available for public use.  
+6. Create review function for users to rate bathroom experience
+7. Create native app for iOS/Android
