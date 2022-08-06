@@ -15,22 +15,36 @@ export default function Map(props) {
   };
 
   const typeNormalize = (type) => {
-    if (type === 'publicToilet') {return 'Public Toilet'};
-    if (type === 'convenienceStore') {return 'Convenience Store Toilet'};
-    if (type === 'fastFood') {return 'Fast Food Toilet'};
-    if (type === 'familyRestaurant') {return 'Family Restaurant Toilet'};
-    if (type === 'departmentStore') {return 'Deparment Store Toilet'};
-    if (type === 'lodging') {return 'Hotel Toilet'};
-    if (type === 'library') {return 'Library Toilet'};
-  }
+    if (type === 'publicToilet') {
+      return 'Public Toilet';
+    }
+    if (type === 'convenienceStore') {
+      return 'Convenience Store Toilet';
+    }
+    if (type === 'fastFood') {
+      return 'Fast Food Toilet';
+    }
+    if (type === 'familyRestaurant') {
+      return 'Family Restaurant Toilet';
+    }
+    if (type === 'departmentStore') {
+      return 'Deparment Store Toilet';
+    }
+    if (type === 'lodging') {
+      return 'Hotel Toilet';
+    }
+    if (type === 'library') {
+      return 'Library Toilet';
+    }
+  };
 
   return (
     <>
-    {/*makes map appear*/}
-      <GoogleMap 
+      {/*makes map appear*/}
+      <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={defaultCenter}
+        center={markerInfo ? null : defaultCenter}
         onClick={() => setMarkerInfo(null)}
       >
         <MarkerF label={'👤'} key={0} position={defaultCenter}></MarkerF>
