@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { LoadScript } from '@react-google-maps/api';
 import './styles/reset.css';
 import './styles/base.css';
 import Header from './components/layout/Header';
 import TopArea from './components/layout/TopArea';
 import MapArea from './components/layout/MapArea';
-import DetailArea from './components/layout/DetailArea';
 
 function App() {
   const [userLocation, setUserLocation] = useState({});
@@ -14,7 +12,6 @@ function App() {
   const [locations, setLocations] = useState([]);
   const [destination, setDestination] = useState({});
 
-  const GOOGLE_API_KEY = process.env.REACT_APP_API_KEY;
   const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER || '';
 
   const getData = async function (limit, mode) {
@@ -52,6 +49,7 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLocation, mode]);
+
   return (
     <>
       <Header />
@@ -63,19 +61,15 @@ function App() {
           setMode={setMode}
         />
       )}
-      <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
-        {/* loads API key */}
-        {locations.length > 1 &&
-          userLocation['lat'] && ( // if location options are greater than one switch to MapArea
-            <MapArea
-              userLocation={userLocation}
-              locations={locations}
-              setUserLocation={setUserLocation}
-              setLocations={setLocations}
-              setDestination={setDestination}
-            />
-          )}
-        {locations.length === 1 &&
+      <MapArea
+        userLocation={userLocation}
+        setUserLocation={setUserLocation}
+        locations={locations}
+        setLocations={setLocations}
+        destination={destination}
+        setDestination={setDestination}
+      />
+      {/* {locations.length === 1 &&
           userLocation['lat'] && ( // if destination set, location set to one and switches to DetailArea
             <DetailArea
               userLocation={userLocation}
@@ -84,8 +78,7 @@ function App() {
               setLocations={setLocations}
               setDestination={setDestination}
             />
-          )}
-      </LoadScript>
+          )} */}
     </>
   );
 }

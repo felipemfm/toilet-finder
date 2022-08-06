@@ -2,5 +2,5 @@
 client/node_modules
 client/build
 .DS_Store
-util
+util/googleMapsScraper.js
 .env
