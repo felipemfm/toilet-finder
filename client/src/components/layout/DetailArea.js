@@ -40,7 +40,7 @@ export default function Map(props) {
         {props.destination.type !== 'publicToilet' ?  <p>Type: {props.destination.type}</p> : null}
         <p>Distance: {Math.floor(props.destination.distance)} m</p>
       </div>
-      <Button title={'cancel'} onClick={clearState} />
+      <Button title={'Clear'} onClick={clearState} />
     </div>
   );
 }
