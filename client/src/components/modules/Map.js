@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
-import { GoogleMap, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, InfoWindowF } from '@react-google-maps/api';
 import Button from './Button';
 
 export default function Map(props) {
-  const [markerInfo, setMarkerInfo] = useState(null);
+  const [activeMarker, setActiveMarker] = useState(null);
+
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   const mapStyles = {
     height: '100%',
@@ -19,22 +26,22 @@ export default function Map(props) {
       return 'Public Toilet';
     }
     if (type === 'convenienceStore') {
-      return 'Convenience Store Toilet';
+      return 'Convenience Store';
     }
     if (type === 'fastFood') {
-      return 'Fast Food Toilet';
+      return 'Fast Food';
     }
     if (type === 'familyRestaurant') {
-      return 'Family Restaurant Toilet';
+      return 'Family Restaurant';
     }
     if (type === 'departmentStore') {
-      return 'Deparment Store Toilet';
+      return 'Department Store';
     }
     if (type === 'lodging') {
-      return 'Hotel Toilet';
+      return 'Hotel';
     }
     if (type === 'library') {
-      return 'Library Toilet';
+      return 'Library';
     }
   };
 
@@ -44,10 +51,9 @@ export default function Map(props) {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={markerInfo ? null : defaultCenter}
-        onClick={() => setMarkerInfo(null)}
+        center={activeMarker ? null : defaultCenter}
       >
-        <MarkerF  key={0} position={defaultCenter} />
+        <MarkerF key={0} position={defaultCenter} />
         {props.locations.length > 0 &&
           props.locations.map((item) => {
             return (
@@ -55,33 +61,34 @@ export default function Map(props) {
                 key={item.id}
                 icon={{
                   url: 'https://i.ibb.co/r3cPX7w/logo-marker-sm.png',
-                  scaledSize: {height: 25, width: 25}
+                  scaledSize: { height: 25, width: 25 },
                 }}
                 position={{ lat: Number(item.lat), lng: Number(item.lng) }}
-                onClick={() => setMarkerInfo(item)}
-              />
+                onClick={() => handleActiveMarker(item.id)}
+              >
+                {activeMarker === item.id ? (
+                  <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
+                    <div>
+                      <h3>Destination: {item.name}</h3>
+                      {item.type !== 'publicToilet' ? (
+                        <h3>Type: {typeNormalize(item.type)}</h3>
+                      ) : null}
+                      <h3>Distance: {Math.floor(item.distance)}m</h3>
+                      <Button
+                        title={'Go!'}
+                        // this click will make MapArea change to DetailArea component
+                        onClick={() => {
+                          props.setLocations([item]);
+                          props.setDestination(item);
+                        }}
+                      />
+                    </div>
+                  </InfoWindowF>
+                ) : null}
+              </MarkerF>
             );
           })}
       </GoogleMap>
-      {markerInfo ? (
-        <div className='location_info'>
-          <h3>Destination: {markerInfo.name}</h3>
-          {markerInfo.type !== 'publicToilet' ? (
-            <h3>Type: {typeNormalize(markerInfo.type)}</h3>
-          ) : null}
-          <h3>Distance: {Math.floor(markerInfo.distance)}m</h3>
-          <br></br>
-          <br></br>
-          <Button
-            title={'Go!'}
-            // this click will make MapArea change to DetailArea component
-            onClick={() => {
-              props.setLocations([markerInfo]);
-              props.setDestination(markerInfo);
-            }}
-          />
-        </div>
-      ) : null}
     </>
   );
 }
