@@ -37,6 +37,7 @@
     "haversine-distance": "^1.2.1",
     "knex": "^2.2.0",
     "nodemon": "^2.0.19",
+    "nth-check": "^2.1.1",
     "path": "^0.12.7",
     "pg": "^8.7.3",
     "react": "^18.2.0",
