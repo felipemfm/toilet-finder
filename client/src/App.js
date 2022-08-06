@@ -14,11 +14,12 @@ function App() {
   const [locations, setLocations] = useState([]);
   const [destination, setDestination] = useState({});
 
-  const GOOGLE_API_KEY = 'AIzaSyB1IuqtNckU_jJcai7fN1lyNj4ua88vs8g';
+  const GOOGLE_API_KEY = process.env.REACT_APP_API_KEY;
+  const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER || '';
 
   const getData = async function (limit, mode) {
     await axios
-      .get('/api/v1/closest', {
+      .get(`${LOCAL_SERVER}/api/v1/closest`, {
         // server runs on 8000 (react on 3000)
         params: { userLocation, limit, mode },
       })
