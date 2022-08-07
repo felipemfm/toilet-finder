@@ -10,7 +10,7 @@ ToiletFinder.com is a super convenient search tool powered by Google Maps for fi
 
 <br>
 
-## **Why?*
+## *Why?*
 
 We wanted a tool that allows us to:
 
@@ -33,10 +33,14 @@ ToiletFinder.com is the only app that provides fast relief!
         DB_NAME=greenfield
         DB_USER=YourUserName
         DB_PASSWORD=YourPassword
+
+
+2. Create a second **.env** file in the client folder and inside it add the following:
+
         REACT_APP_LOCAL_SERVER=http://localhost:8000
         REACT_APP_GOOGLE_API_KEY=YourKeyHere
 
-2.  Setup [Google Maps Platform](https://developers.google.com/maps/get-started) Account (Gives you access to use Google Maps API)
+3. Setup [Google Maps Platform](https://developers.google.com/maps/get-started) Account (Gives you access to use Google Maps API)
     
 
 <br>
@@ -94,8 +98,19 @@ Heroku will use this script on deployment.
 
 1. Enable live location update as user walks toward location (paid)
 2. Expand database to cover all of Tokyo
-3. Work on CSS for map and text consistency throughout each stage of the app
-4. Enable greater location filtering (kid friendly, accessability, open hours)
-5. Add probability that a bathroom is actually available for public use.  
+3. Unclutter the map - get rid of uneccesary native map info, icons, etc.
+4. Work on CSS styling
+5. Enable more API endpoints and location filtering modes (kid friendly, accessability, open hours)
 6. Create review function for users to rate bathroom experience
 7. Create native app for iOS/Android
+
+
+<br>
+
+## **Further Documentation**
+
+
+[Google Maps API](https://developers.google.com/maps/documentation) 
+
+[Google Maps React Library](https://react-google-maps-api-docs.netlify.app/) 
+    
