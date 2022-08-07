@@ -69,16 +69,6 @@ function App() {
         destination={destination}
         setDestination={setDestination}
       />
-      {/* {locations.length === 1 &&
-          userLocation['lat'] && ( // if destination set, location set to one and switches to DetailArea
-            <DetailArea
-              userLocation={userLocation}
-              destination={destination}
-              setUserLocation={setUserLocation}
-              setLocations={setLocations}
-              setDestination={setDestination}
-            />
-          )} */}
     </>
   );
 }

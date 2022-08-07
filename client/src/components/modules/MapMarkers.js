@@ -34,7 +34,6 @@ export default function Map(props) {
               key={item.id + 1}
               icon={{
                 url: 'https://i.ibb.co/r3cPX7w/logo-marker-sm.png',
-                scaledSize: { height: 25, width: 25 },
               }}
               position={{ lat: Number(item.lat), lng: Number(item.lng) }}
               onClick={() => handleActiveMarker(item.id)}

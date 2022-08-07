@@ -22,9 +22,9 @@ export default function TopArea(props) {
       <div>
         <select className='drop_menu'>
           <option value={'closest_bathroom'}>Closest Bathroom</option>
-          <option value='public_bathroom'>Public Bathroom</option>
-          <option value='non_public_bathroom'>Non-Public Bathroom</option>
-          <option value='all_bathrooms'>All Bathrooms</option>
+          <option value={'public_bathroom'}>Public Bathroom</option>
+          <option value={'non_public_bathroom'}>Non-Public Bathroom</option>
+          <option value={'all_bathrooms'}>All Bathrooms</option>
         </select>
         <Button title={'Go!'} onClick={watchUserLocation} />
       </div>

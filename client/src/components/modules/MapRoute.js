@@ -29,17 +29,30 @@ export default function MapRoutes(props) {
         />
       )}
       {routes && (
-        <DirectionsRenderer
-          directions={routes}
-          options={{
-            suppressMarkers: true,
-            polylineOptions: {
-              strokeColor: '#160873',
-              strokeOpacity: 1.0,
-              strokeWeight: 4,
-            },
-          }}
-        />
+        <>
+          <DirectionsRenderer
+            directions={routes}
+            options={{
+              suppressMarkers: true,
+              polylineOptions: {
+                strokeColor: '#4169E1',
+                strokeOpacity: 1.0,
+                strokeWeight: 6,
+              },
+            }}
+          />
+          <DirectionsRenderer
+            directions={routes}
+            options={{
+              suppressMarkers: true,
+              polylineOptions: {
+                strokeColor: '#DC143C',
+                strokeOpacity: 1.0,
+                strokeWeight: 2,  
+              },
+            }}
+          />
+        </>
       )}
     </>
   );
