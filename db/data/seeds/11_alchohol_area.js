@@ -1,0 +1,45 @@
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> } 
+ */
+exports.seed = async function(knex) {
+  await knex('locations').insert([
+    {name: '野口はきもの店', type: 'shoeStore', lat: 35.7262375, lng: 139.5144533},
+    {name: '株式会社デジスタジャパン', type: 'department', lat: 35.71474, lng: 139.706246},
+    {name: 'BOOKOFF', type: 'bookStore', lat: 35.72986579999999, lng: 139.5119502},
+    {name: 'リブロ花小金井店', type: 'bookStore', lat: 35.7268869, lng: 139.5133401},
+    {name: '越後屋金物店', type: 'hardwareStore', lat: 35.721674, lng: 139.51367},
+    {name: '三幸金物店', type: 'hardwareStore', lat: 35.7126183, lng: 139.7010184},
+    {name: '㈱鈴木商事', type: 'hardwareStore', lat: 35.713794, lng: 139.710142},
+    {name: '（有）鈴木刃物店', type: 'hardwareStore', lat: 35.7107916, lng: 139.7122696},
+    {name: '（株）岩佐商会', type: 'hardwareStore', lat: 35.63367, lng: 139.708043},
+    {name: 'BOOKOFF', type: 'bookStore', lat: 35.715041, lng: 139.705101},
+    {name: 'Books Hōrindō Takadanobaba', type: 'bookStore', lat: 35.71286300000001, lng: 139.7051928},
+    {name: 'Igarashi Books', type: 'bookStore', lat: 35.710928, lng: 139.711992},
+    {name: 'Bunryu', type: 'bookStore', lat: 35.7112205, lng: 139.7036822},
+    {name: 'ブックテイスト', type: 'bookStore', lat: 35.7136145, lng: 139.703596},
+    {name: '月光ネコ', type: 'bookStore', lat: 35.7068933, lng: 139.69831},
+    {name: '三楽書房', type: 'bookStore', lat: 35.711361, lng: 139.711187},
+    {name: 'Hirano Book Store', type: 'bookStore', lat: 35.711376, lng: 139.7110926},
+    {name: 'Sorahado Book Store', type: 'bookStore', lat: 35.7169699, lng: 139.6964732},
+    {name: 'Bunshodo Books', type: 'bookStore', lat: 35.7115158, lng: 139.7113578},
+    {name: 'Marumasu Book Store', type: 'bookStore', lat: 35.7158767, lng: 139.6946252},
+    {name: '古書現世', type: 'bookStore', lat: 35.71026299999999, lng: 139.712325},
+    {name: 'Tsubakiya coffee shop Ikebukuro Saryo', type: 'restaurant', lat: 35.73132349999999, lng: 139.7133569},
+    {name: 'Sakura Hotel Ikebukuro', type: 'restaurant', lat: 35.7335181, lng: 139.708808},
+    {name: 'Maison Kayser', type: 'restaurant', lat: 35.7286523, lng: 139.7191426},
+    {name: 'Café de Crié Minami Ikebukuro', type: 'restaurant', lat: 35.7265871, lng: 139.7115488},
+    {name: 'Hattori Coffee-sha', type: 'restaurant', lat: 35.729473, lng: 139.712622},
+    {name: '古城の国のアリス', type: 'restaurant', lat: 35.7271087, lng: 139.7126202},
+    {name: 'CAFE NOISE', type: 'restaurant', lat: 35.730074, lng: 139.7179888},
+    {name: 'Cafe comme ca', type: 'restaurant', lat: 35.7301231, lng: 139.7102648},
+    {name: 'Harbs LUMINE Ikebukuro', type: 'restaurant', lat: 35.7288294, lng: 139.7093241},
+    {name: 'Takase', type: 'restaurant', lat: 35.72637, lng: 139.713483},
+    {name: 'Coffee-tei', type: 'restaurant', lat: 35.7312488, lng: 139.7138556},
+    {name: 'BELG AUBE Tokyo Metropolitan Theatre', type: 'restaurant', lat: 35.7297303, lng: 139.7080402},
+    {name: 'Egg Tokyo', type: 'restaurant', lat: 35.7322426, lng: 139.7156138},
+    {name: 'Cafe Address', type: 'restaurant', lat: 35.7311173, lng: 139.7125309},
+    {name: 'BEEHOUSE', type: 'restaurant', lat: 35.72908779999999, lng: 139.7123718},
+    {name: 'TAMEALS', type: 'restaurant', lat: 35.7283608, lng: 139.7113608},
+  ]);
+};
