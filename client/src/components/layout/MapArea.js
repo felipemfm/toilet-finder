@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import MapMarkers from '../modules/MapMarkers';
-import MapRoutes from '../modules/MapRoute';
-import '../../styles/components/layout/MapArea.css';
-import Button from '../modules/Button';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React, { useState } from "react";
+import MapMarkers from "../modules/MapMarkers";
+import MapRoutes from "../modules/MapRoute";
+import "../../styles/components/layout/MapArea.css";
+import Button from "../modules/Button";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 export default function MapArea(props) {
   const GOOGLE_API_KEY = process.env.REACT_APP_API_KEY;
@@ -11,8 +11,8 @@ export default function MapArea(props) {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const mapStyles = {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
   };
   const defaultCenter = {
     lat: props.userLocation.lat,
@@ -25,19 +25,25 @@ export default function MapArea(props) {
     props.setUserLocation({});
   };
 
+  // const goBack = function () {
+  //   props.
+  // }
+
   return (
-    <div className='map_area'>
+    <div className="map_area">
       <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
+        {props.locations.length > 1 && (
+          <h2 className="map_title">Select a bathroom!</h2>
+        )}
         {props.locations.length > 0 && (
           <>
-            <div className='map'>
+            <div className="map">
               <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={13}
                 center={activeMarker ? null : defaultCenter}
               >
-                <h2 className='map_title'>Select a bathroom!</h2>
-                {props.userLocation['lat'] && (
+                {props.userLocation["lat"] && (
                   <MapMarkers
                     userLocation={props.userLocation}
                     locations={props.locations}
@@ -48,7 +54,7 @@ export default function MapArea(props) {
                     setActiveMarker={setActiveMarker}
                   />
                 )}
-                {props.destination['name'] && (
+                {props.destination["name"] && (
                   <MapRoutes
                     user={props.userLocation}
                     destination={props.destination}
@@ -56,7 +62,7 @@ export default function MapArea(props) {
                 )}
               </GoogleMap>
             </div>
-            <Button title='Clear' onClick={clearState} />
+            <Button title="Clear" onClick={clearState} />
           </>
         )}
       </LoadScript>
