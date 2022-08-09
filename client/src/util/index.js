@@ -1,3 +1,4 @@
+// ["bookStore", "restaurant", "department", "hardwareStore", "shoeStore"]
 export default function typeNormalize(type) {
   if (type === 'publicToilet') {
     return 'Public Toilet';
@@ -20,4 +21,20 @@ export default function typeNormalize(type) {
   if (type === 'library') {
     return 'Library';
   }
+  if (type === 'bookStore') {
+    return 'Book Store';
+  }
+  if (type === 'cafe') {
+    return 'Cafe';
+  }
+  if (type === 'department') {
+    return 'Department Store';
+  }
+  if (type === 'hardwareStore') {
+    return 'Hardware Store';
+  }
+  if (type === 'shoeStore') {
+    return 'Shoe Store';
+  }
+  return `'${type}'`
 }
