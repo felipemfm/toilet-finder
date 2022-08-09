@@ -35,6 +35,7 @@ export default function MapArea(props) {
                 mapContainerStyle={mapStyles}
                 zoom={13}
                 center={activeMarker ? null : defaultCenter}
+                options={{styles: [{featureType: "poi", elementType: "labels", stylers: [{visibility: 'off'}]}]}}
               >
                 <h2 className='map_title'>Select a bathroom!</h2>
                 {props.userLocation['lat'] && (
