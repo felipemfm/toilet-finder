@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import './styles/reset.css';
-import './styles/base.css';
-import Header from './components/layout/Header';
-import TopArea from './components/layout/TopArea';
-import MapArea from './components/layout/MapArea';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./styles/reset.css";
+import "./styles/base.css";
+import Header from "./components/layout/Header";
+import TopArea from "./components/layout/TopArea";
+import MapArea from "./components/layout/MapArea";
 
 function App() {
   const [userLocation, setUserLocation] = useState({});
@@ -12,7 +12,7 @@ function App() {
   const [locations, setLocations] = useState([]);
   const [destination, setDestination] = useState({});
 
-  const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER || '';
+  const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER || "";
 
   const getData = async function (limit, mode) {
     await axios
@@ -28,20 +28,20 @@ function App() {
   };
   // get locations based on menu mode selection
   useEffect(() => {
-    if (userLocation['lat']) {
+    if (userLocation["lat"]) {
       // if user location exists
       switch (mode) {
-        case 'closest_bathroom':
-          getData(1, 'closest_bathroom');
+        case "closest_bathroom":
+          getData(1, "closest_bathroom");
           break;
-        case 'public_bathroom':
-          getData(100, 'public_bathroom');
+        case "public_bathroom":
+          getData(100, "public_bathroom");
           break;
-        case 'non_public_bathroom':
-          getData(100, 'non_public_bathroom');
+        case "non_public_bathroom":
+          getData(100, "non_public_bathroom");
           break;
-        case 'all_bathrooms':
-          getData(100, 'all_bathrooms');
+        case "all_bathrooms":
+          getData(100, "all_bathrooms");
           break;
         default:
           break;
@@ -53,22 +53,23 @@ function App() {
   return (
     <>
       <Header />
-      {locations.length === 0 && ( // if locations empty go to Top Area
+      {locations.length === 0 ? ( // if locations empty go to Top Area
         <TopArea
           userLocation={userLocation}
           setUserLocation={setUserLocation}
           mode={mode}
           setMode={setMode}
         />
+      ) : (
+        <MapArea
+          userLocation={userLocation}
+          setUserLocation={setUserLocation}
+          locations={locations}
+          setLocations={setLocations}
+          destination={destination}
+          setDestination={setDestination}
+        />
       )}
-      <MapArea
-        userLocation={userLocation}
-        setUserLocation={setUserLocation}
-        locations={locations}
-        setLocations={setLocations}
-        destination={destination}
-        setDestination={setDestination}
-      />
     </>
   );
 }
