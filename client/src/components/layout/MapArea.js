@@ -25,9 +25,13 @@ export default function MapArea(props) {
     props.setUserLocation({});
   };
 
+  // const goBack = function () {
+  //   props.
+  // }
+
   return (
     <div className="map_area">
-      <h2 className="map_title">Select a bathroom!</h2>
+      {props.locations.length > 1 && <h2 className="map_title">Select a bathroom!</h2>}
       <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
         {props.locations.length > 0 && (
           <>
@@ -57,7 +61,6 @@ export default function MapArea(props) {
               </GoogleMap>
             </div>
             <Button title="Clear" onClick={clearState} />
-            <Button title="Back" onClick={clearState} />
           </>
         )}
       </LoadScript>
