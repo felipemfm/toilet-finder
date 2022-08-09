@@ -31,8 +31,10 @@ export default function MapArea(props) {
 
   return (
     <div className="map_area">
-      {props.locations.length > 1 && <h2 className="map_title">Select a bathroom!</h2>}
       <LoadScript googleMapsApiKey={GOOGLE_API_KEY}>
+        {props.locations.length > 1 && (
+          <h2 className="map_title">Select a bathroom!</h2>
+        )}
         {props.locations.length > 0 && (
           <>
             <div className="map">
