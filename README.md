@@ -38,7 +38,7 @@ ToiletFinder.com is the only app that provides fast relief!
 2. Create a second **.env** file in the client folder and inside it add the following:
 
         REACT_APP_LOCAL_SERVER=http://localhost:8000
-        REACT_APP_GOOGLE_API_KEY=YourKeyHere
+        REACT_APP_API_KEY=YourKeyHere
 
 3. Setup [Google Maps Platform](https://developers.google.com/maps/get-started) Account (Gives you access to use Google Maps API)
     
