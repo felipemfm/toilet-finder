@@ -1,6 +1,4 @@
-# **The Greenfield Project Repository**
-
-## **ToiletFinder.com**
+# **Toilet Finder**
 
 <br>
 
